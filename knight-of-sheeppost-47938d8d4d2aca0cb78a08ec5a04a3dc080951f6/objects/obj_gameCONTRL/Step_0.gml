@@ -1,0 +1,1 @@
+if(instance_exists(obj_main) && !instance_exists(obj_th_ActWind)){instance_create_layer(obj_main.x,obj_main.y,obj_main.layer,obj_th_ActWind)}
