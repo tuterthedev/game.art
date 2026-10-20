@@ -18,28 +18,28 @@ if setup == false{
 			text_x_offset[p] = 108;
 			portrait_x_offset[p] = 8;
 			
-			if(speaker_side = -1)
+			if(speaker_side[p] == -1)
 			{
-				text_x_offset[p] = 20;
-				portrait_x_offset[p] = 200;
+				text_x_offset[p] = 8;
+				portrait_x_offset[p] = text_x_offset[p] + textbox_width;
 			}
 			if(speaker_sprite[p] == noone){
 				text_x_offset[p] = 60;
 			}
 			
-			
+	//br		
 		for(var c =0; c < text_lenght[p]; c++)
 		{
 			var _char_pos = c + 1;
-			char[c,p] = string_char_at(text[p], _char_pos)
+			char[c,p] = string_char_at(text[p], _char_pos);
 			
-			var _txt_up_to_char = string_copy( text[p], 1, _char_pos)
+			var _txt_up_to_char = string_copy( text[p], 1, _char_pos);
 			var _current_txt_w = string_width(_txt_up_to_char) - string_width(char[c,p]);
 			
 			if char[c,p] = " " { last_free_space = _char_pos +1};
 			
 			//ln br
-			if _current_txt_w = line_break_offset[p] > line_width
+			if _current_txt_w - line_break_offset[p] > line_width
 			{
 				line_break_pos[ line_break_num[p], p ] = last_free_space;
 				line_break_num[p]++;
@@ -54,8 +54,8 @@ if setup == false{
 	for(var c = 0; c< text_lenght[p]; c++)
 	{
 		var _char_pos = c+1
-		var _txt_x = textbox_x + text_x_offset[p] + border;
-		var _txt_y = textbox_y + border;
+		var _txt_x = text_x_offset[p] + border;
+		var _txt_y = border;
 		
 		var _txt_up_to_char = string_copy( text[p], 1, _char_pos)
 		var _current_txt_w = string_width(_txt_up_to_char) - string_width(char[c,p]);
@@ -146,6 +146,46 @@ if(speaker_sprite[page] != noone)
 
 draw_sprite_ext(txtb_spr[page],txtb_img,_txtb_x,_txtb_y,textbox_width/txtb_spr_w,textbox_height/txtb_spr_h,0,c_white,1);
 
+
+
+//TEXTDRAW !!!!!!!!!!!!!!!!!!!!!!!!!!!
+for(var c = 0; c < draw_char; c++)
+{
+	//special thingis
+	//wawy
+	var _float_y = 0;
+	if float_text[c,page] == true 
+	{
+		float_dir[c,page] += -6;
+		_float_y = dsin(float_dir[c,page])
+	}
+	
+	//shake text
+	var _shake_x = 0;
+	var _shake_y = 0;
+	if shake_text[c,page] == true 
+	{
+		shake_time[c,page] --;
+		if shake_time[c,page] <= 0
+		{
+			shake_time[c,page] = irandom_range(4,8)
+			shake_dir[c,page] = irandom(360)
+			
+		}
+		if shake_time[c,page] <= 2
+			{
+				_shake_x = lengthdir_x(1,shake_dir[c,page]);
+				_shake_y = lengthdir_x(1,shake_dir[c,page]);
+			}
+
+	}
+	
+	//text 
+	draw_text_colour(textbox_x + char_x[c,page] + _shake_x, textbox_y + char_y[c,page] + _float_y + _shake_y, char[c,page],col_1[c,page],col_2[c,page],col_3[c,page],col_4[c,page],1);
+}
+
+
+
 if (draw_char == text_lenght[page] && page == page_number - 1)
 	{
 		
@@ -171,14 +211,13 @@ if (draw_char == text_lenght[page] && page == page_number - 1)
 		}
 	}
 
-var _drawtext = string_copy(text[page],1,draw_char)
-draw_text_ext(_txtb_x+ border,_txtb_y + border,_drawtext,line_sep,line_width)
+//var _drawtext = string_copy(text[page],1,draw_char)
+//draw_text_ext(_txtb_x+ border,_txtb_y + border,_drawtext,line_sep,line_width)
 
 /// uhhhhh fuck this part i dunno
-//for(var c = 0; c< draw_char;c++)
-//{
-	//draw_text(char_x[c,page], char_y[c,page],char[c,page]);
-//}
-
+///for(var c = 0; c < draw_char; c++)
+///{
+	///draw_text(textbox_x + char_x[c,page], textbox_y + char_y[c,page], char[c,page]);
+///}
 
 

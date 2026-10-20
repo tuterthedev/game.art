@@ -24,6 +24,8 @@ if accept_key {
 		
 	case 3:
 		room_goto(room_fight_test);
+				break;
+
 	}
 	
 }

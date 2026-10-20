@@ -12,8 +12,8 @@
   "name":"obj_room_manager",
   "overriddenProperties":[],
   "parent":{
-    "name":"object",
-    "path":"folders/object.yy",
+    "name":"main controls",
+    "path":"folders/object/main controls.yy",
   },
   "parentObjectId":null,
   "persistent":true,

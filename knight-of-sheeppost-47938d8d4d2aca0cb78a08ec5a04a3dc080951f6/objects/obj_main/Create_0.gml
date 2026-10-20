@@ -8,6 +8,6 @@ spr_a = main_left_spr
 spr_d = main_right_spr
 
 
+state = main_pl.idle
 
-state = "walk"
 

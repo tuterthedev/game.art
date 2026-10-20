@@ -9,8 +9,8 @@
   "name":"obj_theDialoge",
   "overriddenProperties":[],
   "parent":{
-    "name":"object",
-    "path":"folders/object.yy",
+    "name":"main controls",
+    "path":"folders/object/main controls.yy",
   },
   "parentObjectId":null,
   "persistent":true,

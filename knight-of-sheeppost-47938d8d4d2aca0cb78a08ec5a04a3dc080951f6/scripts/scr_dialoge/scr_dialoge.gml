@@ -11,6 +11,13 @@ function scr_set_defaults_for_test(){
 		col_2[c,page_number] = c_white
 		col_3[c,page_number] = c_white
 		col_4[c,page_number] = c_white
+		
+		float_text[c,page_number] = 0;
+		float_dir[c,page_number] = c * 20;
+		
+		shake_text[c,page_number] = 0;
+		shake_dir[c,page_number] = irandom(360);
+		shake_time[c,page_number] = irandom(4);
 	}
 	
 	
@@ -19,6 +26,54 @@ function scr_set_defaults_for_test(){
 	
 	snd[page_number] = mus_st_voice_norm;
 }
+
+//______________________ VFX ___________________________
+///@param 1st_char
+///@param last_char
+///@param c_1
+///@param c_2
+///@param c_3
+///@param c_4
+function scr_text_color(_start, _end , _col1, _col2, _col3, _col4){
+	for(var c = _start; c <= _end; c++)
+	{
+		col_1[c, page_number - 1] = _col1;
+		col_2[c, page_number - 1] = _col2;
+		col_3[c, page_number - 1] = _col3;
+		col_4[c, page_number - 1] = _col4;
+	}
+
+
+}
+///@param 1st_char
+///@param last_char
+function scr_text_float (_start , _end ){
+
+	for(var c = _start; c <= _end; c++)
+	{
+		float_text[c, page_number - 1] = true;
+		
+	}
+
+
+}
+
+///@param 1st_char
+///@param last_char
+function scr_text_shake (_start , _end ){
+
+	for(var c = _start; c <= _end; c++)
+	{
+		shake_text[c, page_number - 1] = true;
+		
+	}
+
+
+}
+
+
+
+
 
 
 ///@param text
@@ -57,7 +112,7 @@ function scr_text(_text){
 
 ///@param option
 ///@param link_id
-function src_option(_option, _link_id)
+function scr_option(_option, _link_id)
 {
 	option[option_number] = _option;
 	option_link_id[option_number] = _link_id;

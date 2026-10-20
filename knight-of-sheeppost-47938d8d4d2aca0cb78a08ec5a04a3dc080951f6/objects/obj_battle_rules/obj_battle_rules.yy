@@ -9,8 +9,8 @@
   "name":"obj_battle_rules",
   "overriddenProperties":[],
   "parent":{
-    "name":"object",
-    "path":"folders/object.yy",
+    "name":"main controls",
+    "path":"folders/object/main controls.yy",
   },
   "parentObjectId":null,
   "persistent":false,

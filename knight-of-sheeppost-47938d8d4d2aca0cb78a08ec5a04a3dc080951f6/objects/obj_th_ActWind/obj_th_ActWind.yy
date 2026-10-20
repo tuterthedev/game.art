@@ -8,8 +8,8 @@
   "name":"obj_th_ActWind",
   "overriddenProperties":[],
   "parent":{
-    "name":"object",
-    "path":"folders/object.yy",
+    "name":"main controls",
+    "path":"folders/object/main controls.yy",
   },
   "parentObjectId":null,
   "persistent":true,
